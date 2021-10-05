@@ -5,14 +5,15 @@
 # Copyright (C) 2020 KFERMercer <KFER.Mercer@gmail.com>
 # 
 # <https://github.com/KFERMercer/OpenWrt-CI>
-#
+# 
+# 2021.10.05 change to huagnsh version
 
 name: OpenWrt-CI
 
 on:
   push:
     branches: 
-      - master
+      - old
   # schedule:
   #   - cron: 0 20 * * *
   release:
@@ -74,8 +75,13 @@ jobs:
 
           cat >> .config <<EOF
           CONFIG_TARGET_IMAGES_GZIP=y
-          CONFIG_KERNEL_BUILD_USER="OpenWrt-CI"
-          CONFIG_KERNEL_BUILD_DOMAIN="Azure"
+          CONFIG_KERNEL_BUILD_USER="huangsh"
+          CONFIG_KERNEL_BUILD_DOMAIN="huangsh.com"
+          
+          CONFIG_TARGET_KERNEL_PARTSIZE=256
+          CONFIG_TARGET_ROOTFS_PARTSIZE=512
+          CONFIG_TARGET_ROOTFS_PARTNAME=""
+          
           EOF
 
           #
